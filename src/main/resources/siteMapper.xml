@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="t1.SiteMapper">
+
+    <update id="update">
+        update website
+        <set>
+            <if test="site.name!=null">
+                name=#{site.name}
+            </if>
+            <if test="site.url!=null">
+                ,url=#{site.url}
+            </if>
+            <if test="site.age!=null">
+                ,age=#{site.age}
+            </if>
+            <if test="site.country!=null">
+                ,country=#{site.country}
+            </if>
+            <if test="site.createTime!=null">
+                ,createTime=#{site.createTime}
+            </if>
+        </set>
+        where id=#{site.id}
+    </update>
+
+
+
+    <update id="updateByParam">
+        update website
+        <set>
+            <if test="name!=null">
+                ,name=#{name}
+            </if>
+            <if test="url!=null">
+                ,url=#{url}
+            </if>
+            <if test="age!=null">
+                ,age=#{age}
+            </if>
+            <if test="country!=null">
+                ,country=#{country}
+            </if>
+            <if test="createTime!=null">
+                ,createTime=#{createTime}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+
+
+    <select id="select" resultType="t1.Site" parameterType="site">
+        select *
+        from website
+        <where>
+            <if test="site.id!=null">
+                and id=#{site.id}
+            </if>
+            <if test="site.name!=null">
+                and name=#{site.name}
+            </if>
+            <if test="site.url!=null">
+                and url=#{site.url}
+            </if>
+            <if test="site.age!=null">
+                and age=#{site.age}
+            </if>
+            <if test="site.country!=null">
+                and country=#{site.country}
+            </if>
+            <if test="site.createTime!=null">
+                and createTime=#{site.createTime}
+            </if>
+        </where>
+    </select>
+
+
+
+    <select id="selectByParam" resultType="t1.Site">
+        select *
+        from website
+        <where>
+            <if test="id!=null">
+                and id=#{id}
+            </if>
+            <if test="name!=null">
+                and name=#{name}
+            </if>
+            <if test="url!=null">
+                and url=#{url}
+            </if>
+            <if test="age!=null">
+                and age=#{age}
+            </if>
+            <if test="country!=null">
+                and country=#{country}
+            </if>
+            <if test="createTime!=null">
+                and createTime=#{createTime}
+            </if>
+        </where>
+    </select>
+</mapper>
