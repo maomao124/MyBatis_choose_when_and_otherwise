@@ -28,9 +28,10 @@ public interface SiteMapper
     public List<Site> select(@Param("site") Site site);
 
     public List<Site> selectByParam(@Param("id") Integer id, @Param("name") String name, @Param("url") String url,
-                             @Param("age") Integer age, @Param("country") String country, @Param("createTime") Date createTime);
+                                    @Param("age") Integer age, @Param("country") String country, @Param("createTime") Date createTime);
 
+    public List<Site> selectWebsite(Site site);
 
-
-
+    public List<Site> selectWebsiteByParam(@Param("id") Integer id, @Param("name") String name, @Param("url") String url,
+                                           @Param("age") Integer age, @Param("country") String country, @Param("createTime") Date createTime);
 }

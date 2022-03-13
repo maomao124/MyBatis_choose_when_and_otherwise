@@ -27,7 +27,6 @@
     </update>
 
 
-
     <update id="updateByParam">
         update website
         <set>
@@ -49,7 +48,6 @@
         </set>
         where id=#{id}
     </update>
-
 
 
     <select id="select" resultType="t1.Site" parameterType="site">
@@ -78,7 +76,6 @@
     </select>
 
 
-
     <select id="selectByParam" resultType="t1.Site">
         select *
         from website
@@ -101,6 +98,44 @@
             <if test="createTime!=null">
                 and createTime=#{createTime}
             </if>
+        </where>
+    </select>
+
+
+    <select id="selectWebsite" resultType="t1.Site">
+        SELECT id,name,url,age,country
+        FROM website
+        <where>
+            <choose>
+                <when test="name != null and name !=''">
+                    AND name LIKE CONCAT('%',#{name},'%')
+                </when>
+                <when test="url != null and url !=''">
+                    AND url LIKE CONCAT('%',#{url},'%')
+                </when>
+                <otherwise>
+                    AND age is not null
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+
+    <select id="selectWebsiteByParam" resultType="t1.Site">
+        SELECT id,name,url,age,country
+        FROM website
+        <where>
+            <choose>
+                <when test="name != null and name !=''">
+                    AND name LIKE CONCAT('%',#{name},'%')
+                </when>
+                <when test="url != null and url !=''">
+                    AND url LIKE CONCAT('%',#{url},'%')
+                </when>
+                <otherwise>
+                    AND age is not null
+                </otherwise>
+            </choose>
         </where>
     </select>
 </mapper>
